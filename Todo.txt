@@ -1,0 +1,28 @@
+Bugs:
+
+- Ellapse time display on galaxy tab is 4 minutes behind from desktop. Desktop is -1 on initially.
+
+Incomplete:
+
+DONE	- Update kitchen status by Order: Start processing, Ready to deliver, Delivered
+
+- Modify price for product and addon
+
+- User management
+
+- Product/add management
+
+- Restaurant update
+
+- Add Close Order, check to to see all item are delivered or allow overwrite?
+
+Enhancements:
+
+- Make screen fit 12 grid
+- Display Categories with items only
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+﻿<div class="row">
+    <div class="col-sm-3">
+        <a class="btn btn-sm btn-block btn-default"
+           ng-click="selectCategory()">
+            {{'all' | translate}}
+        </a>
+        <a ng-repeat="category in lookup.categories"
+           ng-click="selectCategory(category)" class="btn btn-sm btn-block btn-default"
+           ng-class="getCategoryClass(category)">
+            {{ category.name}}
+        </a>
+    </div>
+
+    <div class="col-sm-5 ">
+        <div class="well">
+            <div class="padder-10">
+                <label ng-repeat="addon in lookup.addons | filter:categoryFilterFn | range:selectedPage:pageSize" class="checkbox">
+                    <input type="checkbox"
+                           name="selectedItems[]"
+                           value="{{addon}}"
+                           ng-model="addon.selected" />
+                    {{addon.name}}
+                    {{addon.price | currency}}
+                </label>
+
+                <div class="row">
+                    <div class="pull-right btn-group">
+                        <a ng-repeat="page in lookup.addons | filter:categoryFilterFn | pageCount:pageSize"
+                           ng-click="selectPage($index + 1)" class="btn btn-default btn-primary"
+                           ng-class="getPageClass($index + 1)">
+                            {{$index + 1}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <div class="well">
+            <div class="row vspacer-5">
+                <div ng-controller="cartCtrl">
+                    <form>
+                        <div class="form-group">
+                            <label class="control-label">Modify:</label>
+                            <div class="control-label">
+                                {{cartData.currentProduct.name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="orderNumber">Description:</label>
+                            <input class="form-control" type="text" ng-model="cartData.currentProduct.notes">
+                        </div>
+                        <div class="form-group" ng-show="cartData.currentProduct.isPriceChangeable">
+                            <label class="control-label" for="orderNumber">Price:</label>
+                            <input class="form-control" type="text" ng-model="cartData.currentProduct.price">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row vspacer-5">
+                <div class="col-sm-3 pull-right">
+                    <button class="btn btn-success" ng-click="saveAddons();">{{'close' | translate}}</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li ng-repeat="addon in selectedItems">
+                        {{addon.name}}
+                        {{addon.price | currency}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

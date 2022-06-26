@@ -1,0 +1,42 @@
+<select 
+        ng-model="employeeId"
+        ng-options="item.id as item.description for item in items"
+        ng-change="selectionChanged(selectedOption)">
+    </select>
+ 
+ 
+<div class="" style="height:250px">
+    <form role="form" class="form-inline form-horizontal input-sm">
+        <div class="row">
+            <label for="employee1" class="control-label col-xs-4">Payment Type</label>
+            <select id="orderStatus" class="form-control">
+                <option>Cash</option>
+                <option>Debit</option>
+                <option>Visa</option>
+                <option>Master Card</option>
+            </select>
+        </div>
+ 
+        <div class="row">
+            <label for="customer" class="control-label col-xs-4">Order Amount</label>
+            <input type="text" class="form-control" readonly="readonly">
+        </div>
+ 
+        <div class="row">
+            <label for="employee1" class="control-label col-xs-4">Tip</label>
+            <input type="text" class="form-control" id="Text1" placeholder="Enter amount">
+        </div>
+ 
+        <div class="row">
+            <label for="employee1" class="control-label col-xs-4">Amount Pay</label>
+            <input type="text" class="form-control" id="fromDate" placeholder="Enter amount">
+        </div>
+ 
+        <div class="row">
+            <div class="col-xs-offset-4">
+                <button class="btn btn-sm btn-primary" ng-click="saveOrder()">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+ 

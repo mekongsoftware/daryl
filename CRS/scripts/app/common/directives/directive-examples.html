@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- CDN sources -->
+    <!--
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js></script>
+     -->
+    <!-- Local sources -->
+    <link href="/scripts/libs/bootstrap/bootstrap-3.3.7.css" rel="stylesheet" />
+    <script src="/scripts/libs/jquery/jquery-3.1.1.js"></script>
+    <script src="/scripts/libs/bootstrap/bootstrap-3.3.7.js"></script>
+    <script src="/scripts/libs/angular/angular-1.5.8.js"></script>
+    <script src="/scripts/libs/angular/angular-ui.router-0.3.1.js"></script>
+    <script src="/scripts/libs/angular/angular-resource-1.5.8.js"></script>
+    <script src="/scripts/libs/angular/angular-messages-1.5.8.js"></script>
+
+    <script>
+        // utility function, use like string.format() in C#, just to make thing easier than concentication
+        String.format = function () {
+            var theString = arguments[0];
+            for (var i = 1; i < arguments.length; i++) {
+                var regEx = new RegExp("\\{" + (i - 1) + "\\}", "gm");
+                theString = theString.replace(regEx, arguments[i]);
+            }
+            return theString;
+        }
+    </script>
+
+    <script src="pagination-directive.js"></script>
+    <script src="dropdown-directive.js"></script>
+
+    <script>
+        var app = angular.module("myApp", [
+            'dirPagination'
+        ]);
+
+        app.controller("paginationDemoCtrl", function ($scope) {
+            $scope.pageInfo = {
+                currentPage: 3,
+                pageSize: 8,
+                rowCount: 100
+            }
+            $scope.goToPage = function (pageNo) {
+                $scope.pageInfo.currentPage = pageNo;
+                $scope.getServerItems(pageNo);
+            }
+            // server dummy data
+            $scope.allItems = [];
+            $scope.getServerItems = function (pageNo) {
+                $scope.allItems = [];
+                for (i = 0; i < $scope.pageInfo.pageSize; i++) {
+                    var itemNo = (pageNo - 1) * $scope.pageInfo.pageSize + i + 1;
+                    if (itemNo > $scope.pageInfo.rowCount)
+                        break;
+                    $scope.allItems.push({ name: 'Item ' + itemNo, id: itemNo });
+                }
+            }
+            $scope.getServerItems(1);
+        });
+    </script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="paginationDemoCtrl">
+        <h1>Page: {{pageInfo.currentPage}}</h1>
+        <ul>
+            <li ng-repeat="item in allItems">Name {{item.name}} (id: {{item.id}})</li>
+        </ul>
+
+        <div pagination
+             current-page="pageInfo.currentPage"
+             page-size="pageInfo.pageSize"
+             row-count="pageInfo.rowCount"
+             go-to-page-fn="goToPage(pageNo)"
+             max-links="8">
+        </div>
+    </div>
+</body>
+</html>
+
+/dropdown.html
+<div>Some sample text here. {{lookupTable}} {{message}}</div>
+
+<div class="panel-body">
+    <select ng-model="column"
+            ng-options="item.id as item.description for item in items"
+            ng-change="selectionChanged(selectedOption)"></select>
+    <div>
+        [{{column}}]
+    </div>
+</div>
+

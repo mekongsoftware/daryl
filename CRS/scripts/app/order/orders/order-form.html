@@ -1,0 +1,66 @@
+<!--orderId: 0,
+            orderNumber: '0',
+            orderStatus: 'Unpaid',
+            scheduledDate: new Date(),
+            performedDate: new Date(),
+            customerName: 'Select Customer',
+            technicianName: 'Select Technician',
+            note: ''-->
+ 
+ 
+<div class="" style="height: 350px" >
+ 
+    <form role="form" class="form-inline form-horizontal input-sm">
+        <div class="row">
+            <div class="col-sm-offset-4 checkbox">
+                <label>
+                    <input type="checkbox" ng-model="tempOrder.isWalkedIn">
+                    Walked-in</label>
+            </div>
+        </div>
+        <div class="row">
+            <label for="scheduledDate" class="control-label col-xs-4">Scheduled</label>
+            <input id="scheduledDate" ng-model="tempOrder.scheduledDate" type="text" class="form-control col-xs-4" placeholder="MM/DD/YYY">
+        </div>
+        <div class="row">
+            <label for="performedDate" class="control-label col-xs-4">Performed</label>
+            <input id="performedDate" ng-model="tempOrder.performedDate" type="text" class="form-control col-xs-4" placeholder="MM/DD/YYY">
+        </div>
+ 
+        <div class="row">
+            <label for="customer" class="control-label col-xs-4">Customer</label>
+            <select id="customer" ng-model="tempOrder.customerName" class="form-control">
+                <option>Customer 1</option>
+                <option>Customer 2</option>
+                <option>Customer 3</option>
+                <option>Customer 4</option>
+            </select>
+            <button class="btn btn-sm btn-primary">+</button>
+        </div>
+ 
+        <div class="row">
+            <label for="employee" class="control-label col-xs-4">Employee</label>
+            <select id="employee" ng-model="tempOrder.employee" class="form-control">
+                <option>Employee 1</option>
+                <option>Employee 2</option>
+                <option>Employee 3</option>
+                <option>Employee 4</option>
+            </select>
+            <button class="btn btn-sm btn-primary">-</button>
+            <button class="btn btn-sm btn-primary">+</button>
+        </div>
+ 
+        <div class="row">
+            <label for="note" class="control-label col-xs-4">Note</label>
+            <textarea rows="3" class="form-control" ng-model="tempOrder.note" placeholder="Enter any note here"/>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-offset-4">
+                <button class="btn btn-sm btn-primary" ng-click="saveOrder()">Save</button>
+                <button class="btn btn-sm btn-primary" ng-click="orderHome()">Cancel</button>
+            </div>
+        </div>
+ 
+    </form>
+</div>

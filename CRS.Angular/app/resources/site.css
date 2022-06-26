@@ -1,0 +1,77 @@
+﻿body {
+   padding-top: 65px;
+}
+
+/* begin custom nav style */
+
+.nav-pills > li > a {
+    font-weight: bold;
+    font-variant: small-caps;
+}
+.nav-pills > .active > a, 
+.nav-pills > .active > a:hover{
+    background-color: tomato !important;
+}
+.nav-custom {
+    background-color: Wheat !important;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* end custom nav style */
+
+.app-container {
+    min-height: 400px;
+}
+
+/* not working
+    .row-zebra: nth-child(even) {background-color: grey}*/
+.row-zebra:nth-of-type(odd) {background-color: red;}
+
+.vspacer {margin-bottom: 2px;}
+.vspacer-5 {margin-bottom: 5px;}
+.vspacer-10 {margin-bottom: 10px;}
+
+.vspacer-top {margin-top: 2px;}
+.vspacer-top-5 {margin-top: 5px;}
+.vspacer-top-10 {margin-top: 10px;}
+
+.hspacer {margin-right: 2px  !important;}
+.hspacer-5 {margin-right: 5px !important;}
+.hspacer-10 {margin-right: 10px !important;}
+
+.padder {padding: 2px !important;}
+.padder-5 {padding: 5px !important;}
+.padder-10 {padding: 10px !important;}
+
+.center-block {float: none !important;}
+.vcenter {display: flex; align-items: center; }
+
+.btn-text-wrap {margin-bottom:4px !important; white-space:normal !important;}
+
+/* make label display as badge*/
+.label-as-badge {
+    border-radius: 1em;
+}
+
+/* order status style */
+.status-order {
+
+}
+
+/* item status style */
+.status-item {
+
+}
+
+.row-order {
+    font-weight: bold;
+    background-color: lightgray;
+}
+
+.note {
+    font-style: italic;
+    font-weight: bold;
+    color:green;
+}
+

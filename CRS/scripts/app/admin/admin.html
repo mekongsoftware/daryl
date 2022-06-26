@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!--UI-Router Source: https://scotch.io/tutorials/angular-routing-using-ui-router-->
+    <!--Validation: https://scotch.io/tutorials/angularjs-form-validation-with-ngmessages-->
+    <!-- CDN sources -->
+    <!--
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.5.8/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js></script>
+    -->
+    <!-- Local sources -->
+    <link href="/scripts/libs/bootstrap/bootstrap-3.3.7.css" rel="stylesheet" />
+    <script src="/scripts/libs/jquery/jquery-3.1.1.js"></script>
+    <script src="/scripts/libs/bootstrap/bootstrap-3.3.7.js"></script>
+    <script src="/scripts/libs/angular/angular-1.5.8.js"></script>
+    <script src="/scripts/libs/angular/angular-ui.router-0.3.1.js"></script>
+    <script src="/scripts/libs/angular/angular-resource-1.5.8.js"></script>
+    <script src="/scripts/libs/angular/angular-messages-1.5.8.js"></script>
+
+    <script src="/scripts/app/common/helpers/js-utilities.js"></script>
+
+    <!-- dependencies for this module, injected in admin-config.js -->
+    <script src="../common/helpers/filters.js"></script>
+    <script src="../common/directives/pagination-directive.js"></script>
+    <script src="category/category.js"></script>
+    <script src="restaurant/restaurant.js"></script>
+    <script src="product/product.js"></script>
+
+    <script src="admin-config.js"></script>
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="routerApp">
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+        <div ui-view></div>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+﻿<h3>Close Order</h3>
+<div class="well">
+    <div class="row vspacer">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">Payment Type:</label>
+            <div class="col-sm-2">
+                <select class="form-control"
+                        ng-change="paymentTypeChange()"
+                        ng-model="paymentType"
+                        ng-options="item for item in paymentTypes"></select>
+            </div>
+            <div class="col-sm-6">
+                <div class="alert alert-danger" style="display:inline-block" ng-show="paymentIsVoided">
+                    This order will be closed as <strong>Void</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row vspacer">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">Bill Amount:</label>
+            <div class="col-sm-2">
+                <input class="form-control text-right" readonly type="text"
+                       value="{{ currentOrder.orderAmount + currentOrder.taxAmount + currentOrder.groupChargeAmount | currency}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="row vspacer">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">Tip:</label>
+            <div class="col-sm-2">
+                <input class="form-control text-right" type="text" 
+                       ng-readonly="paymentIsVoided"
+                       ng-model="currentOrder.tipAmount" currency>
+            </div>
+            <div class="col-sm-7 btn-toolbar">
+                <a class="btn btn-sm btn-default" ng-repeat="tip in suggestedTips"
+                   ng-click="setTipAmount(tip.amount)">{{tip.percent}}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row vspacer">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">Amount Rendered:</label>
+            <div class="col-sm-2">
+                <input class="form-control text-right" type="text" 
+                       ng-readonly="paymentIsVoided"
+                       ng-model="amountRendered" currency>
+            </div>
+            <div class="col-sm-7 btn-toolbar">
+                <a class="btn btn-sm btn-default" ng-repeat="amount in quickPayments"
+                   ng-click="setRenderedAmount(amount)">{{amount | currency}}</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row vspacer">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="">Change:</label>
+            <div class="col-sm-2" ng-class="{'has-error': changeAmount < 0.00 }">
+                <input class="form-control text-right"
+                       readonly type="text" value="{{changeAmount | currency  }}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2 pull-right">
+        <a class="btn btn-sm btn-primary" ui-sref="order-list-cashier">{{'cancel' | translate}}</a>
+        <a class="btn btn-sm btn-primary" ng-click="submitPayment(currentOrder)">OK*</a>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!--UI-Router Source: https://scotch.io/tutorials/angular-routing-using-ui-router-->
+    <!--Validation: https://scotch.io/tutorials/angularjs-form-validation-with-ngmessages-->
+    <!-- CDN sources -->
+    <!--
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.5.8/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js></script>
+    -->
+    <!-- Local sources -->
+    <link href="/scripts/libs/bootstrap/bootstrap-3.3.7.css" rel="stylesheet" />
+    <link href="/scripts/libs/loading-bar/loading-bar.css" rel="stylesheet" />
+
+    <script src="/scripts/libs/jquery/jquery-3.1.1.js"></script>
+    <script src="/scripts/libs/bootstrap/bootstrap-3.3.7.js"></script>
+
+    <script src="/scripts/libs/angular/angular-1.5.8.js"></script>
+    <script src="/scripts/libs/angular/angular-ui.router-0.3.1.js"></script>
+    <script src="/scripts/libs/angular/angular-resource-1.5.8.js"></script>
+    <script src="/scripts/libs/angular/angular-messages-1.5.8.js"></script>
+    <script src="/scripts/libs/angular/angular-local-storage-0.5.0.js"></script>
+    <script src="/scripts/libs/loading-bar/loading-bar.js"></script>
+
+    
+
+    <!-- Load app main script -->
+    <script>
+        var mainApp = angular.module('mainApp', [
+                'ui.router'
+                , 'LocalStorageModule'        // authService
+                , 'angular-loading-bar'       // authService
+                , 'ngResource'  
+                , 'admin.category'
+                , 'admin.restaurant'
+                , 'helper.filters'
+        , 'navigationDir'
+        ]);
+    </script> 
+    
+    <!-- dependencies -->    
+    <script src="/scripts/app/common/helpers/filters.js"></script>
+    <script src="/scripts/app/common/helpers/js-utilities.js"></script>
+    <script src="/scripts/app/common/directives/navigation-directive.js"></script>
+    
+    <script src="authentication/services/auth-interceptor-service.js"></script>
+    <script src="authentication/services/auth-service.js"></script>
+    
+
+
+    <script src="/scripts/app/app_start/navigation.js"></script>
+    <script src="/scripts/app/app_start/router.js"></script>
+
+    <script src="/scripts/app/app_start/initialization.js"></script>
+
+    <script src="authentication/controllers/login-controller.js"></script>
+    <script src="authentication/controllers/signup-controller.js"></script>
+    <script src="admin/category/category.js"></script>
+    <script src="admin/restaurant/restaurant.js"></script>
+    
+</head>
+
+<body ng-app="mainApp">
+    <div class="container">
+        <div navigation-dir
+             current-state="{{$state.current.name}}"
+             user-access-level="{{user.accessLevel}}"
+             user-name="{{user.name}}"></div>
+        <div ui-view></div>
+
+        <hr />
+        <pre id="uiRouterInfo">
+            $state = {{$state.current.name}}
+            $stateParams = {{$stateParams}}
+            $state full url = {{ $state.$current.url.source }}  
+            User/access level:  {{user.name}} / {{user.accessLevel}}
+        </pre>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<div ng-controller="navigationCtrl">
+    <h6><span class="label-warning">Path is: {{path}}</span></h6>
+
+    <nav role="navigation" class="navbar navbar-default">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Brand</a>
+        </div>
+
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <ul id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li route_to='/' ng-class="getClass('/')"><a href="#">Home</a></li>
+
+                <li route_to='/order' ng-class="getClass('/order')"><a href="#">Order</a></li>
+
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Admin<b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li route_to='/admin/store' ng-class="getClass('/admin/store')"><a href="#">Store</a></li>
+                        <li route_to='/admin/product' ng-class="getClass('/admin/product')"><a href="#">Product</a></li>
+                        <li route_to='/admin/customer' ng-class="getClass('/admin/customer')"><a href="#">Customer</a></li>
+                        <li route_to='/admin/employee' ng-class="getClass('/admin/employee')"><a href="#">Employee</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">More...</a></li>
+                    </ul>
+                </li>
+
+                <li class="" ng-class="getClass('/')"><a href="http://localhost:13478/Help">API Help</a></li>
+            </ul>
+
+
+
+            <form role="search" class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                </div>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li route_to='/login' ng-class="getClass('/login')"><a href="#">Login</a></li>
+            </ul>
+    </nav>
+</div>

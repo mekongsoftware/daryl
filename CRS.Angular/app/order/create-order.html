@@ -1,0 +1,28 @@
+﻿
+<div ng-controller="orderCtrl">
+    <div ng-include src="'/app/order/order-input.html'"></div>
+
+    <div ng-show="isShowCart">
+        <div ng-controller="cartCtrl">
+            <div ng-include src="'/app/order/cart.html'"></div>
+        </div>
+    </div>
+
+    <div ng-show="isShowProducts">
+        <div ng-controller="cartCtrl">
+            {{cartData.products.length}}
+        </div>
+
+        <div ng-controller="productListCtrl">
+            <div ng-include src="'/app/order/product-list.html'"></div>
+        </div>
+    </div>
+
+
+    <div ng-show="isShowAddons">
+
+        <div ng-controller="addonListCtrl">
+            <div ng-include src="'/app/order/addon-list.html'"></div>
+        </div>
+    </div>
+</div>

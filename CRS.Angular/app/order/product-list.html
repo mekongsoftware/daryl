@@ -1,0 +1,41 @@
+﻿<div class="row">
+    <div class="col-sm-2">
+        <a ng-click="selectCategory()" class="btn btn-block btn-default btn-lg">{{'all' | translate}}</a>
+        <a ng-repeat="item in lookup.categories | orderBy:'category' "
+           ng-click="selectCategory(item)"
+           class="btn btn-block btn-default btn-sm btn-text-wrap"
+           ng-class="getCategoryClass(item)">
+            {{item.name}}
+        </a>
+    </div>
+
+    <div class="col-sm-7 hspacer-10">
+        <div class="row vspacer-5" ng-repeat="row in productRows">
+            <div class="col-sm-3" ng-repeat="item in row">
+                <a ng-click="addProductToCart(item)"
+                   class="btn btn-block btn-default btn-sm btn-text-wrap">
+                    <div class="text-left">
+                        <span class="label label-default">{{item.code}}</span>
+                        <span class="pull-right">{{item.price | currency}}</span>
+                        <br />
+                        <strong>{{item.name}} </strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        <div class="row vspacer-5">
+            <div class="">
+                <button class="btn btn-primary" ng-click="closeProduct();">{{'close' | translate}}</button>
+            </div>
+        </div>
+        <div class="row vspacer">
+            {{cartMessage()}}
+        </div>
+        <div class="row vspacer">
+            {{addedMessage()}}
+        </div>
+    </div>
+</div>

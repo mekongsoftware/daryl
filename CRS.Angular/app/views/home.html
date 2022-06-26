@@ -1,0 +1,10 @@
+<div ng-show="authData.accessLevel == undefined"
+     ng-include="'/app/views/welcome.html'">
+</div>
+
+<div class="row" ng-show="authData.accessLevel > 0"
+    ng-include="'/app/views/menu.html'">
+</div>
+
+<div ui-view></div>
+

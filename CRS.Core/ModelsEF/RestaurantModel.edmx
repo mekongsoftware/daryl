@@ -1,0 +1,2787 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RestaurantModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Addon">
+          <Key>
+            <PropertyRef Name="AddonId" />
+          </Key>
+          <Property Name="AddonId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="PriceId" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="uniqueidentifier" />
+          <Property Name="CategoryCode" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="PrepareMinutes" Type="int" />
+          <Property Name="IsModifer" Type="bit" />
+          <Property Name="IsPriceChangeable" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="First" Type="varchar" MaxLength="50" />
+          <Property Name="Last" Type="varchar" MaxLength="50" />
+          <Property Name="Middle" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone1" Type="varchar" MaxLength="50" />
+          <Property Name="Phone2" Type="varchar" MaxLength="50" />
+          <Property Name="Facebook" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Customization">
+          <Key>
+            <PropertyRef Name="CustomizationId" />
+          </Key>
+          <Property Name="CustomizationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Key" Type="varchar" MaxLength="50" />
+          <Property Name="Value" Type="varchar" MaxLength="1000" />
+          <Property Name="DataType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="NameNative" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="TableId" Type="uniqueidentifier" />
+          <Property Name="OrderTypeId" Type="uniqueidentifier" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="PartySize" Type="int" />
+          <Property Name="SplitBillEvenFlag" Type="bit" />
+          <Property Name="EmailReceiptFlag" Type="bit" />
+          <Property Name="TextReceiptFlag" Type="bit" />
+          <Property Name="OrderTime" Type="datetime" />
+          <Property Name="DeliverTime" Type="datetime" />
+          <Property Name="PaidTime" Type="datetime" />
+          <Property Name="TaxRatePercent" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="OrderAmount" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="TipAmount" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="50" />
+          <Property Name="OrderStaffId" Type="uniqueidentifier" />
+          <Property Name="ServiceStaffId" Type="uniqueidentifier" />
+          <Property Name="CashierStaffId" Type="uniqueidentifier" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="IsToGo" Type="bit" />
+          <Property Name="IsCompleted" Type="bit" />
+          <Property Name="IsLocked" Type="bit" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderEvent">
+          <Key>
+            <PropertyRef Name="OrderEventId" />
+          </Key>
+          <Property Name="OrderEventId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="uniqueidentifier" />
+          <Property Name="TimeStamp" Type="datetime" />
+          <Property Name="DescriptionEn" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionVi" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionKo" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionEs" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionZh" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="OrderProductId" />
+          </Key>
+          <Property Name="OrderProductId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="uniqueidentifier" />
+          <Property Name="ProductId" Type="uniqueidentifier" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="Sequence" Type="uniqueidentifier" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="SeatNumber" Type="int" />
+          <Property Name="OrderTime" Type="datetime" />
+          <Property Name="FinishTime" Type="datetime" />
+          <Property Name="DeliverTime" Type="datetime" />
+          <Property Name="Price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="IsComplementary" Type="bit" />
+          <Property Name="IsToGo" Type="bit" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="OrderProductAddon">
+          <Key>
+            <PropertyRef Name="OrderProductAddonId" />
+          </Key>
+          <Property Name="OrderProductAddonId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderProductId" Type="uniqueidentifier" />
+          <Property Name="AddonId" Type="uniqueidentifier" />
+          <Property Name="OrderTime" Type="datetime" />
+          <Property Name="FinishTime" Type="datetime" />
+          <Property Name="DeliverTime" Type="datetime" />
+          <Property Name="Price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="IsComplimentary" Type="bit" />
+          <Property Name="IsToGo" Type="bit" />
+          <Property Name="StatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderPromotion">
+          <Key>
+            <PropertyRef Name="OrderPromotionId" />
+          </Key>
+          <Property Name="OrderPromotionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="OrderTypeId" />
+          </Key>
+          <Property Name="OrderTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="DescriptionEn" Type="varchar" MaxLength="100" />
+          <Property Name="DescriptionVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="PriceId" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="20" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionEn" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionVi" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionKo" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionEs" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionZh" Type="nvarchar" MaxLength="200" />
+          <Property Name="Price" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="CategoryId" Type="uniqueidentifier" />
+          <Property Name="CategoryCode" Type="varchar" MaxLength="50" />
+          <Property Name="IsAddonRequired" Type="bit" />
+          <Property Name="PrepareMinutes" Type="int" />
+          <Property Name="PicturePath" Type="varchar" MaxLength="100" />
+          <Property Name="IsPriceChangeable" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+          </Key>
+          <Property Name="PromotionId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="ApplicableCategoryId" Type="uniqueidentifier" />
+          <Property Name="AmountPercent" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="IsPercent" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="RestaurantId" />
+          </Key>
+          <Property Name="RestaurantId" Type="int" Nullable="false" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="Location" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="ResourceFolder" Type="varchar" MaxLength="200" />
+          <Property Name="Address1" Type="varchar" MaxLength="100" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="State" Type="varchar" MaxLength="10" />
+          <Property Name="Zip" Type="varchar" MaxLength="15" />
+          <Property Name="Phone" Type="varchar" MaxLength="15" />
+          <Property Name="Contact1" Type="uniqueidentifier" />
+          <Property Name="Contact2" Type="uniqueidentifier" />
+          <Property Name="Contact3" Type="uniqueidentifier" />
+          <Property Name="TaxPercent" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="GroupPeople" Type="int" />
+          <Property Name="GroupChargePercent" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="RecommendedTipPercent" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="CreditCardSurcharge" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="SlowOrderWarningMinutes" Type="int" />
+          <Property Name="RefreshIntervalSeconds" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Language" Type="char" MaxLength="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsFoodTruck" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="RestaurantCustomization">
+          <Key>
+            <PropertyRef Name="RestaurantCustomizationId" />
+          </Key>
+          <Property Name="RestaurantCustomizationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="CustomizationId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="RestaurantLanguage">
+          <Key>
+            <PropertyRef Name="RestaurantLanguageId" />
+          </Key>
+          <Property Name="RestaurantLanguageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="LanguageId" Type="int" />
+        </EntityType>
+        <EntityType Name="RestaurantModule">
+          <Key>
+            <PropertyRef Name="RestaurantModule" />
+          </Key>
+          <Property Name="RestaurantModule" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="ModuleId" Type="int" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="ApplyTo" Type="varchar" MaxLength="50" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="NameEn" Type="varchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionEn" Type="varchar" MaxLength="100" />
+          <Property Name="DescriptionVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionKo" Type="nvarchar" MaxLength="190" />
+          <Property Name="DescriptionEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="TableId" />
+          </Key>
+          <Property Name="TableId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="PriceId" Type="varchar" MaxLength="50" />
+          <Property Name="SequenceNo" Type="int" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameEs" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameZh" Type="nvarchar" MaxLength="100" />
+          <Property Name="DescriptionEn" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionVi" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionKo" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionEs" Type="nvarchar" MaxLength="200" />
+          <Property Name="DescriptionZh" Type="nvarchar" MaxLength="200" />
+          <Property Name="TableShapeId" Type="int" />
+          <Property Name="Seats" Type="int" />
+          <Property Name="LocationY" Type="int" />
+          <Property Name="LocationX" Type="int" />
+          <Property Name="IsForCustomer" Type="bit" />
+          <Property Name="LastActivity" Type="datetime" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="LastUpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="TableShape">
+          <Key>
+            <PropertyRef Name="TableShapeId" />
+          </Key>
+          <Property Name="TableShapeId" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="NameEn" Type="varchar" MaxLength="50" />
+          <Property Name="NameVi" Type="varchar" MaxLength="50" />
+          <Property Name="NameKo" Type="varchar" MaxLength="50" />
+          <Property Name="NameEs" Type="varchar" MaxLength="50" />
+          <Property Name="NameZh" Type="varchar" MaxLength="50" />
+          <Property Name="Class" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AuthenticationId" Type="uniqueidentifier" />
+          <Property Name="RestaurantId" Type="int" />
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="NameEn" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone1" Type="varchar" MaxLength="20" />
+          <Property Name="Phone2" Type="varchar" MaxLength="20" />
+          <Property Name="UserType" Type="uniqueidentifier" />
+          <Property Name="DefaultLanguage" Type="char" MaxLength="2" />
+          <Property Name="Note" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LastLogin" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserHistory">
+          <Key>
+            <PropertyRef Name="UserHistoryId" />
+          </Key>
+          <Property Name="UserHistoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="DateStamp" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Addon_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Addon" Type="Self.Addon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Addon">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Addon_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Addon" Type="Self.Addon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Addon">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_CashierStaff">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CashierStaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order1" Type="Self.Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="Order1">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStaff">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderStaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderType">
+          <End Role="OrderType" Type="Self.OrderType" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderType">
+              <PropertyRef Name="OrderTypeId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ServiceStaff">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ServiceStaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="TableId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderEvent_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderEvent" Type="Self.OrderEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderEvent">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProductAddon_OrderProduct">
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="0..1" />
+          <End Role="OrderProductAddon" Type="Self.OrderProductAddon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderProduct">
+              <PropertyRef Name="OrderProductId" />
+            </Principal>
+            <Dependent Role="OrderProductAddon">
+              <PropertyRef Name="OrderProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProductAddon_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="OrderProductAddon" Type="Self.OrderProductAddon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="OrderProductAddon">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPromotion_OrderPromotion">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderPromotion" Type="Self.OrderPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderPromotion">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAddon_Addon">
+          <End Role="Addon" Type="Self.Addon" Multiplicity="0..1" />
+          <End Role="OrderProductAddon" Type="Self.OrderProductAddon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addon">
+              <PropertyRef Name="AddonId" />
+            </Principal>
+            <Dependent Role="OrderProductAddon">
+              <PropertyRef Name="AddonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promotion_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="ApplicableCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promotion_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Contact3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Contact1">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Contact1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Contact2">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Contact2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantCustomization_Customization">
+          <End Role="Customization" Type="Self.Customization" Multiplicity="0..1" />
+          <End Role="RestaurantCustomization" Type="Self.RestaurantCustomization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customization">
+              <PropertyRef Name="CustomizationId" />
+            </Principal>
+            <Dependent Role="RestaurantCustomization">
+              <PropertyRef Name="CustomizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantCustomization_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="RestaurantCustomization" Type="Self.RestaurantCustomization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="RestaurantCustomization">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantModule_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="RestaurantModule" Type="Self.RestaurantModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleId" />
+            </Principal>
+            <Dependent Role="RestaurantModule">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantModule_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="RestaurantModule" Type="Self.RestaurantModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="RestaurantModule">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_TableShape">
+          <End Role="TableShape" Type="Self.TableShape" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableShape">
+              <PropertyRef Name="TableShapeId" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="TableShapeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHistory_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserHistory" Type="Self.UserHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestaurantModelStoreContainer">
+          <EntitySet Name="Addon" EntityType="Self.Addon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customization" EntityType="Self.Customization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderEvent" EntityType="Self.OrderEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderProductAddon" EntityType="Self.OrderProductAddon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderPromotion" EntityType="Self.OrderPromotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurant" EntityType="Self.Restaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantCustomization" EntityType="Self.RestaurantCustomization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantLanguage" EntityType="Self.RestaurantLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantModule" EntityType="Self.RestaurantModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableShape" EntityType="Self.TableShape" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserHistory" EntityType="Self.UserHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Addon_Category" Association="Self.FK_Addon_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Addon" EntitySet="Addon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Addon_Restaurant" Association="Self.FK_Addon_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Addon" EntitySet="Addon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Restaurant" Association="Self.FK_Category_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_CashierStaff" Association="Self.FK_Order_CashierStaff">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Order" Association="Self.FK_Order_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order1" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStaff" Association="Self.FK_Order_OrderStaff">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderType" Association="Self.FK_Order_OrderType">
+            <End Role="OrderType" EntitySet="OrderType" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Restaurant" Association="Self.FK_Order_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ServiceStaff" Association="Self.FK_Order_ServiceStaff">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Table" Association="Self.FK_Order_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderEvent_Order" Association="Self.FK_OrderEvent_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderEvent" EntitySet="OrderEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Order" Association="Self.FK_OrderProduct_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Status" Association="Self.FK_OrderProduct_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProductAddon_OrderProduct" Association="Self.FK_OrderProductAddon_OrderProduct">
+            <End Role="OrderProduct" EntitySet="OrderProduct" />
+            <End Role="OrderProductAddon" EntitySet="OrderProductAddon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProductAddon_Status" Association="Self.FK_OrderProductAddon_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="OrderProductAddon" EntitySet="OrderProductAddon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPromotion_OrderPromotion" Association="Self.FK_OrderPromotion_OrderPromotion">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderPromotion" EntitySet="OrderPromotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Restaurant" Association="Self.FK_Product_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAddon_Addon" Association="Self.FK_ProductAddon_Addon">
+            <End Role="Addon" EntitySet="Addon" />
+            <End Role="OrderProductAddon" EntitySet="OrderProductAddon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promotion_Category" Association="Self.FK_Promotion_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Promotion" EntitySet="Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promotion_Restaurant" Association="Self.FK_Promotion_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Promotion" EntitySet="Promotion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Contact" Association="Self.FK_Restaurant_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Contact1" Association="Self.FK_Restaurant_Contact1">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Contact2" Association="Self.FK_Restaurant_Contact2">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Language" Association="Self.FK_Restaurant_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Restaurant" EntitySet="Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantCustomization_Customization" Association="Self.FK_RestaurantCustomization_Customization">
+            <End Role="Customization" EntitySet="Customization" />
+            <End Role="RestaurantCustomization" EntitySet="RestaurantCustomization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantCustomization_Restaurant" Association="Self.FK_RestaurantCustomization_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="RestaurantCustomization" EntitySet="RestaurantCustomization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantModule_Module" Association="Self.FK_RestaurantModule_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="RestaurantModule" EntitySet="RestaurantModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantModule_Restaurant" Association="Self.FK_RestaurantModule_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="RestaurantModule" EntitySet="RestaurantModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Restaurant" Association="Self.FK_Table_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="Table" EntitySet="Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Status" Association="Self.FK_Table_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Table" EntitySet="Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_TableShape" Association="Self.FK_Table_TableShape">
+            <End Role="TableShape" EntitySet="TableShape" />
+            <End Role="Table" EntitySet="Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Restaurant" Association="Self.FK_User_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurant" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHistory_User" Association="Self.FK_UserHistory_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserHistory" EntitySet="UserHistory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestaurantModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Addon">
+          <Key>
+            <PropertyRef Name="AddonId" />
+          </Key>
+          <Property Name="AddonId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="PriceId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Guid" />
+          <Property Name="CategoryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrepareMinutes" Type="Int32" />
+          <Property Name="IsModifer" Type="Boolean" />
+          <Property Name="IsPriceChangeable" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Addon_Category" FromRole="Addon" ToRole="Category" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_Addon_Restaurant" FromRole="Addon" ToRole="Restaurant" />
+          <NavigationProperty Name="OrderProductAddons" Relationship="Self.FK_ProductAddon_Addon" FromRole="Addon" ToRole="OrderProductAddon" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Addons" Relationship="Self.FK_Addon_Category" FromRole="Category" ToRole="Addon" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_Category_Restaurant" FromRole="Category" ToRole="Restaurant" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Promotions" Relationship="Self.FK_Promotion_Category" FromRole="Category" ToRole="Promotion" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Guid" Nullable="false" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="First" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Middle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Facebook" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Restaurants" Relationship="Self.FK_Restaurant_Contact" FromRole="Contact" ToRole="Restaurant" />
+          <NavigationProperty Name="Restaurants1" Relationship="Self.FK_Restaurant_Contact1" FromRole="Contact" ToRole="Restaurant" />
+          <NavigationProperty Name="Restaurants2" Relationship="Self.FK_Restaurant_Contact2" FromRole="Contact" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Customization">
+          <Key>
+            <PropertyRef Name="CustomizationId" />
+          </Key>
+          <Property Name="CustomizationId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RestaurantCustomizations" Relationship="Self.FK_RestaurantCustomization_Customization" FromRole="Customization" ToRole="RestaurantCustomization" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameNative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Restaurants" Relationship="Self.FK_Restaurant_Language" FromRole="Language" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ModuleId" />
+          </Key>
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="RestaurantModules" Relationship="Self.FK_RestaurantModule_Module" FromRole="Module" ToRole="RestaurantModule" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="TableId" Type="Guid" />
+          <Property Name="OrderTypeId" Type="Guid" />
+          <Property Name="OrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PartySize" Type="Int32" />
+          <Property Name="SplitBillEvenFlag" Type="Boolean" />
+          <Property Name="EmailReceiptFlag" Type="Boolean" />
+          <Property Name="TextReceiptFlag" Type="Boolean" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+          <Property Name="DeliverTime" Type="DateTime" Precision="3" />
+          <Property Name="PaidTime" Type="DateTime" Precision="3" />
+          <Property Name="TaxRatePercent" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="OrderAmount" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="TipAmount" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderStaffId" Type="Guid" />
+          <Property Name="ServiceStaffId" Type="Guid" />
+          <Property Name="CashierStaffId" Type="Guid" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="IsToGo" Type="Boolean" />
+          <Property Name="IsCompleted" Type="Boolean" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Order_CashierStaff" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="Order1" Relationship="Self.FK_Order_Order" FromRole="Order" ToRole="Order1" />
+          <NavigationProperty Name="Order2" Relationship="Self.FK_Order_Order" FromRole="Order1" ToRole="Order" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Order_OrderStaff" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="OrderType" Relationship="Self.FK_Order_OrderType" FromRole="Order" ToRole="OrderType" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_Order_Restaurant" FromRole="Order" ToRole="Restaurant" />
+          <NavigationProperty Name="User2" Relationship="Self.FK_Order_ServiceStaff" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Order_Status" FromRole="Order" ToRole="Status" />
+          <NavigationProperty Name="Table" Relationship="Self.FK_Order_Table" FromRole="Order" ToRole="Table" />
+          <NavigationProperty Name="OrderEvents" Relationship="Self.FK_OrderEvent_Order" FromRole="Order" ToRole="OrderEvent" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK_OrderProduct_Order" FromRole="Order" ToRole="OrderProduct" />
+          <NavigationProperty Name="OrderPromotions" Relationship="Self.FK_OrderPromotion_OrderPromotion" FromRole="Order" ToRole="OrderPromotion" />
+        </EntityType>
+        <EntityType Name="OrderEvent">
+          <Key>
+            <PropertyRef Name="OrderEventId" />
+          </Key>
+          <Property Name="OrderEventId" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Guid" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionKo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEs" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionZh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderEvent_Order" FromRole="OrderEvent" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="OrderProductId" />
+          </Key>
+          <Property Name="OrderProductId" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Guid" />
+          <Property Name="ProductId" Type="Guid" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="Sequence" Type="Guid" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SeatNumber" Type="Int32" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+          <Property Name="FinishTime" Type="DateTime" Precision="3" />
+          <Property Name="DeliverTime" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="IsComplementary" Type="Boolean" />
+          <Property Name="IsToGo" Type="Boolean" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_OrderProduct_Status" FromRole="OrderProduct" ToRole="Status" />
+          <NavigationProperty Name="OrderProductAddons" Relationship="Self.FK_OrderProductAddon_OrderProduct" FromRole="OrderProduct" ToRole="OrderProductAddon" />
+        </EntityType>
+        <EntityType Name="OrderProductAddon">
+          <Key>
+            <PropertyRef Name="OrderProductAddonId" />
+          </Key>
+          <Property Name="OrderProductAddonId" Type="Guid" Nullable="false" />
+          <Property Name="OrderProductId" Type="Guid" />
+          <Property Name="AddonId" Type="Guid" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+          <Property Name="FinishTime" Type="DateTime" Precision="3" />
+          <Property Name="DeliverTime" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="IsComplimentary" Type="Boolean" />
+          <Property Name="IsToGo" Type="Boolean" />
+          <Property Name="StatusId" Type="Int32" />
+          <NavigationProperty Name="Addon" Relationship="Self.FK_ProductAddon_Addon" FromRole="OrderProductAddon" ToRole="Addon" />
+          <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProductAddon_OrderProduct" FromRole="OrderProductAddon" ToRole="OrderProduct" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_OrderProductAddon_Status" FromRole="OrderProductAddon" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="OrderPromotion">
+          <Key>
+            <PropertyRef Name="OrderPromotionId" />
+          </Key>
+          <Property Name="OrderPromotionId" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Guid" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderPromotion_OrderPromotion" FromRole="OrderPromotion" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="OrderType">
+          <Key>
+            <PropertyRef Name="OrderTypeId" />
+          </Key>
+          <Property Name="OrderTypeId" Type="Guid" Nullable="false" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_OrderType" FromRole="OrderType" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DescriptionVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="PriceId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionKo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEs" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionZh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CategoryId" Type="Guid" />
+          <Property Name="CategoryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAddonRequired" Type="Boolean" />
+          <Property Name="PrepareMinutes" Type="Int32" />
+          <Property Name="PicturePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsPriceChangeable" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_Product_Restaurant" FromRole="Product" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+          </Key>
+          <Property Name="PromotionId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicableCategoryId" Type="Guid" />
+          <Property Name="AmountPercent" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="IsPercent" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Promotion_Category" FromRole="Promotion" ToRole="Category" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_Promotion_Restaurant" FromRole="Promotion" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Restaurant">
+          <Key>
+            <PropertyRef Name="RestaurantId" />
+          </Key>
+          <Property Name="RestaurantId" Type="Int32" Nullable="false" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResourceFolder" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Contact1" Type="Guid" />
+          <Property Name="Contact2" Type="Guid" />
+          <Property Name="Contact3" Type="Guid" />
+          <Property Name="TaxPercent" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="GroupPeople" Type="Int32" />
+          <Property Name="GroupChargePercent" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="RecommendedTipPercent" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="CreditCardSurcharge" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="SlowOrderWarningMinutes" Type="Int32" />
+          <Property Name="RefreshIntervalSeconds" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Language" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsFoodTruck" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Addons" Relationship="Self.FK_Addon_Restaurant" FromRole="Restaurant" ToRole="Addon" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Restaurant" FromRole="Restaurant" ToRole="Category" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Restaurant_Contact" FromRole="Restaurant" ToRole="Contact" />
+          <NavigationProperty Name="Contact4" Relationship="Self.FK_Restaurant_Contact1" FromRole="Restaurant" ToRole="Contact" />
+          <NavigationProperty Name="Contact5" Relationship="Self.FK_Restaurant_Contact2" FromRole="Restaurant" ToRole="Contact" />
+          <NavigationProperty Name="Language1" Relationship="Self.FK_Restaurant_Language" FromRole="Restaurant" ToRole="Language" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Restaurant" FromRole="Restaurant" ToRole="Order" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Restaurant" FromRole="Restaurant" ToRole="Product" />
+          <NavigationProperty Name="Promotions" Relationship="Self.FK_Promotion_Restaurant" FromRole="Restaurant" ToRole="Promotion" />
+          <NavigationProperty Name="RestaurantCustomizations" Relationship="Self.FK_RestaurantCustomization_Restaurant" FromRole="Restaurant" ToRole="RestaurantCustomization" />
+          <NavigationProperty Name="RestaurantModules" Relationship="Self.FK_RestaurantModule_Restaurant" FromRole="Restaurant" ToRole="RestaurantModule" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Table_Restaurant" FromRole="Restaurant" ToRole="Table" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Restaurant" FromRole="Restaurant" ToRole="User" />
+        </EntityType>
+        <EntityType Name="RestaurantCustomization">
+          <Key>
+            <PropertyRef Name="RestaurantCustomizationId" />
+          </Key>
+          <Property Name="RestaurantCustomizationId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="CustomizationId" Type="Guid" />
+          <NavigationProperty Name="Customization" Relationship="Self.FK_RestaurantCustomization_Customization" FromRole="RestaurantCustomization" ToRole="Customization" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_RestaurantCustomization_Restaurant" FromRole="RestaurantCustomization" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="RestaurantLanguage">
+          <Key>
+            <PropertyRef Name="RestaurantLanguageId" />
+          </Key>
+          <Property Name="RestaurantLanguageId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="LanguageId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RestaurantModule">
+          <Key>
+            <PropertyRef Name="RestaurantModule1" />
+          </Key>
+          <Property Name="RestaurantModule1" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="ModuleId" Type="Int32" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Module" Relationship="Self.FK_RestaurantModule_Module" FromRole="RestaurantModule" ToRole="Module" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_RestaurantModule_Restaurant" FromRole="RestaurantModule" ToRole="Restaurant" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="ApplyTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DescriptionVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionKo" Type="String" MaxLength="190" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Status" FromRole="Status" ToRole="Order" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK_OrderProduct_Status" FromRole="Status" ToRole="OrderProduct" />
+          <NavigationProperty Name="OrderProductAddons" Relationship="Self.FK_OrderProductAddon_Status" FromRole="Status" ToRole="OrderProductAddon" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Table_Status" FromRole="Status" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="TableId" />
+          </Key>
+          <Property Name="TableId" Type="Guid" Nullable="false" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="PriceId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SequenceNo" Type="Int32" />
+          <Property Name="NameEn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameEs" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameZh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEn" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionKo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionEs" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionZh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TableShapeId" Type="Int32" />
+          <Property Name="Seats" Type="Int32" />
+          <Property Name="LocationY" Type="Int32" />
+          <Property Name="LocationX" Type="Int32" />
+          <Property Name="IsForCustomer" Type="Boolean" />
+          <Property Name="LastActivity" Type="DateTime" Precision="3" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Table" FromRole="Table" ToRole="Order" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_Table_Restaurant" FromRole="Table" ToRole="Restaurant" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Table_Status" FromRole="Table" ToRole="Status" />
+          <NavigationProperty Name="TableShape" Relationship="Self.FK_Table_TableShape" FromRole="Table" ToRole="TableShape" />
+        </EntityType>
+        <EntityType Name="TableShape">
+          <Key>
+            <PropertyRef Name="TableShapeId" />
+          </Key>
+          <Property Name="TableShapeId" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameEn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameVi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameKo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameEs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameZh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Tables" Relationship="Self.FK_Table_TableShape" FromRole="TableShape" ToRole="Table" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="AuthenticationId" Type="Guid" />
+          <Property Name="RestaurantId" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameEn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Phone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserType" Type="Guid" />
+          <Property Name="DefaultLanguage" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_CashierStaff" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Orders1" Relationship="Self.FK_Order_OrderStaff" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Orders2" Relationship="Self.FK_Order_ServiceStaff" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Restaurant" Relationship="Self.FK_User_Restaurant" FromRole="User" ToRole="Restaurant" />
+          <NavigationProperty Name="UserHistories" Relationship="Self.FK_UserHistory_User" FromRole="User" ToRole="UserHistory" />
+        </EntityType>
+        <EntityType Name="UserHistory">
+          <Key>
+            <PropertyRef Name="UserHistoryId" />
+          </Key>
+          <Property Name="UserHistoryId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="DateStamp" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserHistory_User" FromRole="UserHistory" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Addon_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Addon" Type="Self.Addon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Addon">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Addon_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Addon" Type="Self.Addon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Addon">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductAddon_Addon">
+          <End Role="Addon" Type="Self.Addon" Multiplicity="0..1" />
+          <End Role="OrderProductAddon" Type="Self.OrderProductAddon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Addon">
+              <PropertyRef Name="AddonId" />
+            </Principal>
+            <Dependent Role="OrderProductAddon">
+              <PropertyRef Name="AddonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promotion_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="ApplicableCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Contact3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Contact1">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Contact1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Contact2">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="ContactId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Contact2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantCustomization_Customization">
+          <End Role="Customization" Type="Self.Customization" Multiplicity="0..1" />
+          <End Role="RestaurantCustomization" Type="Self.RestaurantCustomization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customization">
+              <PropertyRef Name="CustomizationId" />
+            </Principal>
+            <Dependent Role="RestaurantCustomization">
+              <PropertyRef Name="CustomizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Restaurant_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="Restaurant">
+              <PropertyRef Name="Language" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantModule_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="RestaurantModule" Type="Self.RestaurantModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ModuleId" />
+            </Principal>
+            <Dependent Role="RestaurantModule">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_CashierStaff">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CashierStaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order1" Type="Self.Order" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="Order1">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderStaff">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderStaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_OrderType">
+          <End Role="OrderType" Type="Self.OrderType" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderType">
+              <PropertyRef Name="OrderTypeId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_ServiceStaff">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ServiceStaffId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Table">
+          <End Role="Table" Type="Self.Table" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table">
+              <PropertyRef Name="TableId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="TableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderEvent_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderEvent" Type="Self.OrderEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderEvent">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderPromotion_OrderPromotion">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderPromotion" Type="Self.OrderPromotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderPromotion">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProduct_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="OrderProduct">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProductAddon_OrderProduct">
+          <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="0..1" />
+          <End Role="OrderProductAddon" Type="Self.OrderProductAddon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderProduct">
+              <PropertyRef Name="OrderProductId" />
+            </Principal>
+            <Dependent Role="OrderProductAddon">
+              <PropertyRef Name="OrderProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderProductAddon_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="OrderProductAddon" Type="Self.OrderProductAddon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="OrderProductAddon">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promotion_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Promotion">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantCustomization_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="RestaurantCustomization" Type="Self.RestaurantCustomization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="RestaurantCustomization">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantModule_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="RestaurantModule" Type="Self.RestaurantModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="RestaurantModule">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Restaurant">
+          <End Role="Restaurant" Type="Self.Restaurant" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurant">
+              <PropertyRef Name="RestaurantId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RestaurantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_TableShape">
+          <End Role="TableShape" Type="Self.TableShape" Multiplicity="0..1" />
+          <End Role="Table" Type="Self.Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableShape">
+              <PropertyRef Name="TableShapeId" />
+            </Principal>
+            <Dependent Role="Table">
+              <PropertyRef Name="TableShapeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHistory_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserHistory" Type="Self.UserHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserHistory">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="RestaurantEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addons" EntityType="Self.Addon" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Customizations" EntityType="Self.Customization" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="Modules" EntityType="Self.Module" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderEvents" EntityType="Self.OrderEvent" />
+          <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
+          <EntitySet Name="OrderProductAddons" EntityType="Self.OrderProductAddon" />
+          <EntitySet Name="OrderPromotions" EntityType="Self.OrderPromotion" />
+          <EntitySet Name="OrderTypes" EntityType="Self.OrderType" />
+          <EntitySet Name="Pages" EntityType="Self.Page" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+          <EntitySet Name="Restaurants" EntityType="Self.Restaurant" />
+          <EntitySet Name="RestaurantCustomizations" EntityType="Self.RestaurantCustomization" />
+          <EntitySet Name="RestaurantLanguages" EntityType="Self.RestaurantLanguage" />
+          <EntitySet Name="RestaurantModules" EntityType="Self.RestaurantModule" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Tables" EntityType="Self.Table" />
+          <EntitySet Name="TableShapes" EntityType="Self.TableShape" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserHistories" EntityType="Self.UserHistory" />
+          <AssociationSet Name="FK_Addon_Category" Association="Self.FK_Addon_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Addon" EntitySet="Addons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Addon_Restaurant" Association="Self.FK_Addon_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Addon" EntitySet="Addons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductAddon_Addon" Association="Self.FK_ProductAddon_Addon">
+            <End Role="Addon" EntitySet="Addons" />
+            <End Role="OrderProductAddon" EntitySet="OrderProductAddons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Restaurant" Association="Self.FK_Category_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promotion_Category" Association="Self.FK_Promotion_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Promotion" EntitySet="Promotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Contact" Association="Self.FK_Restaurant_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Contact1" Association="Self.FK_Restaurant_Contact1">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Contact2" Association="Self.FK_Restaurant_Contact2">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantCustomization_Customization" Association="Self.FK_RestaurantCustomization_Customization">
+            <End Role="Customization" EntitySet="Customizations" />
+            <End Role="RestaurantCustomization" EntitySet="RestaurantCustomizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Restaurant_Language" Association="Self.FK_Restaurant_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="Restaurant" EntitySet="Restaurants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantModule_Module" Association="Self.FK_RestaurantModule_Module">
+            <End Role="Module" EntitySet="Modules" />
+            <End Role="RestaurantModule" EntitySet="RestaurantModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_CashierStaff" Association="Self.FK_Order_CashierStaff">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Order" Association="Self.FK_Order_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Order1" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStaff" Association="Self.FK_Order_OrderStaff">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderType" Association="Self.FK_Order_OrderType">
+            <End Role="OrderType" EntitySet="OrderTypes" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Restaurant" Association="Self.FK_Order_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_ServiceStaff" Association="Self.FK_Order_ServiceStaff">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Table" Association="Self.FK_Order_Table">
+            <End Role="Table" EntitySet="Tables" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderEvent_Order" Association="Self.FK_OrderEvent_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderEvent" EntitySet="OrderEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Order" Association="Self.FK_OrderProduct_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderPromotion_OrderPromotion" Association="Self.FK_OrderPromotion_OrderPromotion">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderPromotion" EntitySet="OrderPromotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProduct_Status" Association="Self.FK_OrderProduct_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProductAddon_OrderProduct" Association="Self.FK_OrderProductAddon_OrderProduct">
+            <End Role="OrderProduct" EntitySet="OrderProducts" />
+            <End Role="OrderProductAddon" EntitySet="OrderProductAddons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderProductAddon_Status" Association="Self.FK_OrderProductAddon_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="OrderProductAddon" EntitySet="OrderProductAddons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Restaurant" Association="Self.FK_Product_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promotion_Restaurant" Association="Self.FK_Promotion_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Promotion" EntitySet="Promotions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantCustomization_Restaurant" Association="Self.FK_RestaurantCustomization_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="RestaurantCustomization" EntitySet="RestaurantCustomizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantModule_Restaurant" Association="Self.FK_RestaurantModule_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="RestaurantModule" EntitySet="RestaurantModules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Restaurant" Association="Self.FK_Table_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="Table" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Restaurant" Association="Self.FK_User_Restaurant">
+            <End Role="Restaurant" EntitySet="Restaurants" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Status" Association="Self.FK_Table_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Table" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_TableShape" Association="Self.FK_Table_TableShape">
+            <End Role="TableShape" EntitySet="TableShapes" />
+            <End Role="Table" EntitySet="Tables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHistory_User" Association="Self.FK_UserHistory_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserHistory" EntitySet="UserHistories" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantEntities">
+          <EntitySetMapping Name="Addons">
+            <EntityTypeMapping TypeName="RestaurantModel.Addon">
+              <MappingFragment StoreEntitySet="Addon">
+                <ScalarProperty Name="AddonId" ColumnName="AddonId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PrepareMinutes" ColumnName="PrepareMinutes" />
+                <ScalarProperty Name="IsModifer" ColumnName="IsModifer" />
+                <ScalarProperty Name="IsPriceChangeable" ColumnName="IsPriceChangeable" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="RestaurantModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="RestaurantModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="RestaurantModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="RestaurantModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="RestaurantModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="RestaurantModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="First" ColumnName="First" />
+                <ScalarProperty Name="Last" ColumnName="Last" />
+                <ScalarProperty Name="Middle" ColumnName="Middle" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customizations">
+            <EntityTypeMapping TypeName="RestaurantModel.Customization">
+              <MappingFragment StoreEntitySet="Customization">
+                <ScalarProperty Name="CustomizationId" ColumnName="CustomizationId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="RestaurantModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameNative" ColumnName="NameNative" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="RestaurantModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="RestaurantModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="TableId" ColumnName="TableId" />
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="PartySize" ColumnName="PartySize" />
+                <ScalarProperty Name="SplitBillEvenFlag" ColumnName="SplitBillEvenFlag" />
+                <ScalarProperty Name="EmailReceiptFlag" ColumnName="EmailReceiptFlag" />
+                <ScalarProperty Name="TextReceiptFlag" ColumnName="TextReceiptFlag" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+                <ScalarProperty Name="PaidTime" ColumnName="PaidTime" />
+                <ScalarProperty Name="TaxRatePercent" ColumnName="TaxRatePercent" />
+                <ScalarProperty Name="OrderAmount" ColumnName="OrderAmount" />
+                <ScalarProperty Name="TipAmount" ColumnName="TipAmount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="OrderStaffId" ColumnName="OrderStaffId" />
+                <ScalarProperty Name="ServiceStaffId" ColumnName="ServiceStaffId" />
+                <ScalarProperty Name="CashierStaffId" ColumnName="CashierStaffId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="IsToGo" ColumnName="IsToGo" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderEvents">
+            <EntityTypeMapping TypeName="RestaurantModel.OrderEvent">
+              <MappingFragment StoreEntitySet="OrderEvent">
+                <ScalarProperty Name="OrderEventId" ColumnName="OrderEventId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionVi" ColumnName="DescriptionVi" />
+                <ScalarProperty Name="DescriptionKo" ColumnName="DescriptionKo" />
+                <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />
+                <ScalarProperty Name="DescriptionZh" ColumnName="DescriptionZh" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProducts">
+            <EntityTypeMapping TypeName="RestaurantModel.OrderProduct">
+              <MappingFragment StoreEntitySet="OrderProduct">
+                <ScalarProperty Name="OrderProductId" ColumnName="OrderProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+                <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsComplementary" ColumnName="IsComplementary" />
+                <ScalarProperty Name="IsToGo" ColumnName="IsToGo" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProductAddons">
+            <EntityTypeMapping TypeName="RestaurantModel.OrderProductAddon">
+              <MappingFragment StoreEntitySet="OrderProductAddon">
+                <ScalarProperty Name="OrderProductAddonId" ColumnName="OrderProductAddonId" />
+                <ScalarProperty Name="OrderProductId" ColumnName="OrderProductId" />
+                <ScalarProperty Name="AddonId" ColumnName="AddonId" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="FinishTime" ColumnName="FinishTime" />
+                <ScalarProperty Name="DeliverTime" ColumnName="DeliverTime" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsComplimentary" ColumnName="IsComplimentary" />
+                <ScalarProperty Name="IsToGo" ColumnName="IsToGo" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderPromotions">
+            <EntityTypeMapping TypeName="RestaurantModel.OrderPromotion">
+              <MappingFragment StoreEntitySet="OrderPromotion">
+                <ScalarProperty Name="OrderPromotionId" ColumnName="OrderPromotionId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderTypes">
+            <EntityTypeMapping TypeName="RestaurantModel.OrderType">
+              <MappingFragment StoreEntitySet="OrderType">
+                <ScalarProperty Name="OrderTypeId" ColumnName="OrderTypeId" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="RestaurantModel.Page">
+              <MappingFragment StoreEntitySet="Page">
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionVi" ColumnName="DescriptionVi" />
+                <ScalarProperty Name="DescriptionKo" ColumnName="DescriptionKo" />
+                <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />
+                <ScalarProperty Name="DescriptionZh" ColumnName="DescriptionZh" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="RestaurantModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionVi" ColumnName="DescriptionVi" />
+                <ScalarProperty Name="DescriptionKo" ColumnName="DescriptionKo" />
+                <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />
+                <ScalarProperty Name="DescriptionZh" ColumnName="DescriptionZh" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="IsAddonRequired" ColumnName="IsAddonRequired" />
+                <ScalarProperty Name="PrepareMinutes" ColumnName="PrepareMinutes" />
+                <ScalarProperty Name="PicturePath" ColumnName="PicturePath" />
+                <ScalarProperty Name="IsPriceChangeable" ColumnName="IsPriceChangeable" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="RestaurantModel.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="ApplicableCategoryId" ColumnName="ApplicableCategoryId" />
+                <ScalarProperty Name="AmountPercent" ColumnName="AmountPercent" />
+                <ScalarProperty Name="IsPercent" ColumnName="IsPercent" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurants">
+            <EntityTypeMapping TypeName="RestaurantModel.Restaurant">
+              <MappingFragment StoreEntitySet="Restaurant">
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ResourceFolder" ColumnName="ResourceFolder" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="Contact3" ColumnName="Contact3" />
+                <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
+                <ScalarProperty Name="GroupPeople" ColumnName="GroupPeople" />
+                <ScalarProperty Name="GroupChargePercent" ColumnName="GroupChargePercent" />
+                <ScalarProperty Name="RecommendedTipPercent" ColumnName="RecommendedTipPercent" />
+                <ScalarProperty Name="CreditCardSurcharge" ColumnName="CreditCardSurcharge" />
+                <ScalarProperty Name="SlowOrderWarningMinutes" ColumnName="SlowOrderWarningMinutes" />
+                <ScalarProperty Name="RefreshIntervalSeconds" ColumnName="RefreshIntervalSeconds" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsFoodTruck" ColumnName="IsFoodTruck" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantCustomizations">
+            <EntityTypeMapping TypeName="RestaurantModel.RestaurantCustomization">
+              <MappingFragment StoreEntitySet="RestaurantCustomization">
+                <ScalarProperty Name="RestaurantCustomizationId" ColumnName="RestaurantCustomizationId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="CustomizationId" ColumnName="CustomizationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantLanguages">
+            <EntityTypeMapping TypeName="RestaurantModel.RestaurantLanguage">
+              <MappingFragment StoreEntitySet="RestaurantLanguage">
+                <ScalarProperty Name="RestaurantLanguageId" ColumnName="RestaurantLanguageId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantModules">
+            <EntityTypeMapping TypeName="RestaurantModel.RestaurantModule">
+              <MappingFragment StoreEntitySet="RestaurantModule">
+                <ScalarProperty Name="RestaurantModule1" ColumnName="RestaurantModule" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="RestaurantModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="ApplyTo" ColumnName="ApplyTo" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionVi" ColumnName="DescriptionVi" />
+                <ScalarProperty Name="DescriptionKo" ColumnName="DescriptionKo" />
+                <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />
+                <ScalarProperty Name="DescriptionZh" ColumnName="DescriptionZh" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tables">
+            <EntityTypeMapping TypeName="RestaurantModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="TableId" ColumnName="TableId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+                <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="DescriptionEn" ColumnName="DescriptionEn" />
+                <ScalarProperty Name="DescriptionVi" ColumnName="DescriptionVi" />
+                <ScalarProperty Name="DescriptionKo" ColumnName="DescriptionKo" />
+                <ScalarProperty Name="DescriptionEs" ColumnName="DescriptionEs" />
+                <ScalarProperty Name="DescriptionZh" ColumnName="DescriptionZh" />
+                <ScalarProperty Name="TableShapeId" ColumnName="TableShapeId" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="IsForCustomer" ColumnName="IsForCustomer" />
+                <ScalarProperty Name="LastActivity" ColumnName="LastActivity" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableShapes">
+            <EntityTypeMapping TypeName="RestaurantModel.TableShape">
+              <MappingFragment StoreEntitySet="TableShape">
+                <ScalarProperty Name="TableShapeId" ColumnName="TableShapeId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="NameVi" ColumnName="NameVi" />
+                <ScalarProperty Name="NameKo" ColumnName="NameKo" />
+                <ScalarProperty Name="NameEs" ColumnName="NameEs" />
+                <ScalarProperty Name="NameZh" ColumnName="NameZh" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RestaurantModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AuthenticationId" ColumnName="AuthenticationId" />
+                <ScalarProperty Name="RestaurantId" ColumnName="RestaurantId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NameEn" ColumnName="NameEn" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="DefaultLanguage" ColumnName="DefaultLanguage" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserHistories">
+            <EntityTypeMapping TypeName="RestaurantModel.UserHistory">
+              <MappingFragment StoreEntitySet="UserHistory">
+                <ScalarProperty Name="UserHistoryId" ColumnName="UserHistoryId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="RestaurantModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

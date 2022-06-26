@@ -1,0 +1,34 @@
+﻿<div ng-controller="tableListCtrl">
+
+    <div class="well">
+        <div class="row">
+            <div class="col-sm-2">
+                <button class="btn btn-sm btn-warning" ui-sref="order-list-cashier({tableIdId: null})">
+                    {{'all_pending_orders' | translate}}
+                </button>
+            </div>
+            <div class="col-sm-4 col-sm-offset-6 pull-right">
+                <button class="btn btn-sm btn-danger" 
+                        ng-click="deleteAllOrders()">
+                    Delete All Demo Orders
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row vspacer-5" ng-repeat="row in tableRows ">
+        <div class="col-sm-2" ng-repeat="table in row">
+            <a class="btn btn-sm btn-primary btn-block"
+               ng-class="{'btn-warning': table.pendingOrders.length > 0}"
+               ng-click="selectTable(table.tableId, table.pendingOrders.length)">
+                <h3>
+                    {{table.name}}
+                    <span class="badge"
+                          ng-show="table.pendingOrders.length > 0">
+                        {{table.pendingOrders.length}}
+                    </span>
+                </h3>
+            </a>
+        </div>
+    </div>
+</div>

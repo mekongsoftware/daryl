@@ -1,0 +1,33 @@
+<h4>Category</h4>
+<form class="form-horizontal" name="inputForm">
+
+    <div class="form-group form-group-sm">
+        <label for="description" class="control-label col-xs-2">Description</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="description"
+                   ng-model="currentItem.name" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="description" class="control-label col-xs-2">Description (Viet)</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="description"
+                   ng-model="currentItem.vName" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <div class="col-xs-offset-2 col-xs-10">
+            <div class="help-block" ng-messages="inputForm.$error">
+                <div ng-messages-include="/Scripts/app/common/error-messages.html"></div>
+            </div>
+        </div>
+        <div class="col-xs-offset-2 col-xs-10">
+            <a ng-click="inputForm.$valid && save()" class="btn btn-xs btn-primary">Save</a>
+            <a ng-click="cancel()" class="btn btn-xs btn-primary">Cancel</a>
+            <a ng-show="currentItem.isActive != false" ng-click="softDelete(false)" class="btn btn-xs btn-warning">Delete</a>
+            <a ng-show="currentItem.isActive == false" ng-click="softDelete(true)" class="btn btn-xs btn-primary">Undelete</a>
+        </div>
+    </div>
+</form>

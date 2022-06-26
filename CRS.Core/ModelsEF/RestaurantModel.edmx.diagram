@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0bbf0294fef84ed7a0d775bdf86d3b6e" Name="Diagram1">
+        <EntityTypeShape EntityType="RestaurantModel.Addon" Width="1.5" PointX="7.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Category" Width="1.5" PointX="5.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Contact" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Customization" Width="1.5" PointX="3" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Language" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Module" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Order" Width="1.5" PointX="7.5" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.OrderEvent" Width="1.5" PointX="9.75" PointY="35.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.OrderProduct" Width="1.5" PointX="12.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.OrderProductAddon" Width="1.5" PointX="12.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.OrderPromotion" Width="1.5" PointX="9.75" PointY="39.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.OrderType" Width="1.5" PointX="5.25" PointY="37.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Page" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Product" Width="1.5" PointX="10.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Promotion" Width="1.5" PointX="7.5" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Restaurant" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.RestaurantCustomization" Width="1.5" PointX="5.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.RestaurantLanguage" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.RestaurantModule" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Status" Width="1.5" PointX="8" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.Table" Width="1.5" PointX="10.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.TableShape" Width="1.5" PointX="8" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.User" Width="1.5" PointX="5.25" PointY="52.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RestaurantModel.UserHistory" Width="1.5" PointX="7.5" PointY="53.875" IsExpanded="true" />
+        <AssociationConnector Association="RestaurantModel.FK_Addon_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Addon_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_ProductAddon_Addon" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Category_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Promotion_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Restaurant_Contact" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Restaurant_Contact1" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Restaurant_Contact2" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_RestaurantCustomization_Customization" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Restaurant_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_RestaurantModule_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_CashierStaff" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_OrderStaff" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_OrderType" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_ServiceStaff" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Order_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_OrderEvent_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_OrderProduct_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_OrderPromotion_OrderPromotion" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_OrderProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_OrderProduct_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_OrderProductAddon_OrderProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_OrderProductAddon_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Product_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Promotion_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_RestaurantCustomization_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_RestaurantModule_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Table_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_User_Restaurant" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Table_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_Table_TableShape" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.FK_UserHistory_User" ManuallyRouted="false" />
+        <AssociationConnector Association="RestaurantModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

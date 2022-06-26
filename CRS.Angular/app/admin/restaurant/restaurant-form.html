@@ -1,0 +1,145 @@
+<h4>Restaurant</h4>
+<form class="form-horizontal" name="inputForm">
+
+    <div class="form-group form-group-sm">
+        <label for="name" class="control-label col-xs-2">Name</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="description"
+                   ng-model="currentItem.name" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="location" class="control-label col-xs-2">Location</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="location"
+                   ng-model="currentItem.location" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="code" class="control-label col-xs-2">Code</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="code"
+                   ng-model="currentItem.code" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="address1" class="control-label col-xs-2">Address 1</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="address1"
+                   ng-model="currentItem.address1" ng-minlength="2" ng-maxlength="50" />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="address2" class="control-label col-xs-2">Address 2</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="address2"
+                   ng-model="currentItem.address2" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <label for="city" class="control-label col-xs-2">City</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="city"
+                   ng-model="currentItem.city" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="state" class="control-label col-xs-2">State</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="state"
+                   ng-model="currentItem.state" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="zip" class="control-label col-xs-2">Zip</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="zip"
+                   ng-model="currentItem.zip" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="phone" class="control-label col-xs-2">Phone:</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="phone"
+                   ng-model="currentItem.phone" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="owner" class="control-label col-xs-2">Owner</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="owner"
+                   ng-model="currentItem.owner" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="onwerPhone" class="control-label col-xs-2">Onwer Phone</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="onwerPhone"
+                   ng-model="currentItem.onwerPhone" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="taxPercent" class="control-label col-xs-2">Tax (%)</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="taxPercent"
+                   ng-model="currentItem.taxPercent" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="groupPeople" class="control-label col-xs-2">Group People Count</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="groupPeople"
+                   ng-model="currentItem.groupPeople" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="groupChargePercent" class="control-label col-xs-2">Group Charge (%)</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="groupChargePercent"
+                   ng-model="currentItem.groupChargePercent" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <label for="recommendedTipPercent" class="control-label col-xs-2">Recommended Tip (%)</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="recommendedTipPercent"
+                   ng-model="currentItem.recommendedTipPercent" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+    
+
+    <div class="form-group form-group-sm">
+        <label for="creditCardSurcharge" class="control-label col-xs-2">Credit Card Surcharge (%)</label>
+        <div class="col-xs-10">
+            <input class="form-control" type="text" name="creditCardSurcharge"
+                   ng-model="currentItem.creditCardSurcharge" ng-minlength="2" ng-maxlength="50" required />
+        </div>
+    </div>
+
+    <div class="form-group form-group-sm">
+        <div class="col-xs-offset-2 col-xs-10">
+            <div class="help-block" ng-messages="inputForm.$error">
+                <div ng-messages-include="/app/languages/error-messages-en.html"></div>
+            </div>
+        </div>
+        <div class="col-xs-offset-2 col-xs-10">
+            <a ng-click="inputForm.$valid && save()" class="btn btn-xs btn-primary">Save</a>
+            <a ng-click="cancel()" class="btn btn-xs btn-primary">Cancel</a>
+            <a ng-show="currentItem.isActive != false" ng-click="softDelete(false)" class="btn btn-xs btn-warning">Delete</a>
+            <a ng-show="currentItem.isActive == false" ng-click="softDelete(true)" class="btn btn-xs btn-primary">Undelete</a>
+        </div>
+    </div>
+</form>

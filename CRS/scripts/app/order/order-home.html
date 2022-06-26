@@ -1,0 +1,85 @@
+﻿<div data-ng-controller="orderCtrl">
+    Directive:
+    <sample-text></sample-text>
+    Drop down test:
+    <helper-dropdown column="employeeId" lookup-table="employee"></helper-dropdown>
+    <br />
+    ---
+    <!--inline editable: https://vitalets.github.io/angular-xeditable/-->
+
+    <div class="well">
+        <div class="row">
+            <div class="col-xs-4">
+                <button type="button" class="btn btn-sm btn-success" ng-click="newOrder()">New</button>
+                <button type="button" class="btn btn-sm btn-success" ng-click="searchOrder()">Search</button>
+            </div>
+            <div class="col-xs-8" ng-hide="orderSelected">
+                <span class="">No order selected.</span>
+            </div>
+            <div class="col-xs-8 text-right" ng-hide="!orderSelected">
+                <button type="button" class="btn btn-sm btn-primary" ng-click="editOrder()">Edit</button>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="addServices()">Add Services</button>
+                <button type="button" class="btn btn-sm btn-primary" ng-click="payOrder()">Payment</button>
+            </div>
+
+        </div>
+        <div class="row">
+            &nbsp;
+        </div>
+        <div ng-hide="!orderSelected">
+
+            <div class="row">
+                <div class="col-xs-2">
+                    Order#:
+                    <strong>{{currentOrder.orderNumber}}</strong>
+                </div>
+                <div class="col-xs-2">
+                    Order Date:
+                </div>
+                <div class="col-xs-2">
+                    <strong>{{currentOrder.scheduledDate | date:"MM/dd/yyyy"}}</strong>
+                </div>
+                <div class="col-xs-2">
+                    Performed Date:
+                </div>
+                <div class="col-xs-2">
+                    <strong>{{currentOrder.performedDate | date:"MM/dd/yyyy"}}</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-xs-offset-2">
+                    Customer:
+                </div>
+                <div class="col-xs-2">
+                    <strong>{{currentOrder.customerName}}</strong>
+                </div>
+                <div class="col-xs-2">
+                    Technician:
+                </div>
+                <div class="col-xs-2">
+                    <strong>{{currentOrder.technicianName}}</strong>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <p></p>
+    <div ng-hide="!orderSelected" ng-include src="'/Scripts/app/order/checkout/orderSummary.html'"></div>
+
+    <div ng-hide="hideView('searchOrder')">
+        <search-order />
+    </div>
+
+    <div ng-hide="hideView('orderInput')" ng-include src="'/Scripts/app/order/order/orderInput.html'"></div>
+    <div ng-hide="hideView('paymentInput')" ng-include src="'/Scripts/app/order/order/paymentInput.html'"></div>
+
+    <div ng-hide="hideView('addServices')">
+        <div ng-include src="'/Scripts/app/order/product/productList.html'"></div>
+    </div>
+
+    <div class="alert alert-danger" ng-show="data.error">
+        Error ({{data.error.status}}). The product data was not loaded.
+        <a href="/app.html" class="alert-link">Click here to try again</a>
+    </div>
+</div>

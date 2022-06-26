@@ -1,0 +1,50 @@
+<div class="panel panel-default row" ng-controller="productListCtrl"
+     ng-hide="data.error">
+
+    <div class="col-xs-3">
+        <a class="btn btn-sm btn-block btn-default"
+           ng-click="selectCategory()">
+            Home
+        </a>
+        <a ng-repeat="category in data.categories"
+           ng-click="selectCategory(category)" class="btn btn-sm btn-block btn-default"
+           ng-class="getCategoryClass(category)">
+            {{ category.description}}
+        </a>
+    </div>
+
+    <div class="col-xs-8">
+        <table class="table table-striped">
+            <colgroup>
+                <col style="width: 80%">
+                <col style="width: 10%">
+                <col style="width: 10%">
+            </colgroup>
+            <tbody>
+                <tr class="well"
+                    ng-repeat="product in data.products | filter:categoryFilterFn | range:selectedPage:pageSize">
+                    <td>
+                        {{product.name}}
+                    </td>
+                    <td>
+                        <span class="pull-right">{{product.price | currency}}</span>
+                    </td>
+                    <td>
+                        <button ng-click="addProductToCart(product)"
+                                class="btn btn-sm btn-success pull-right">
+                            Add
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pull-right btn-group">
+            <a ng-repeat="page in data.products | filter:categoryFilterFn | pageCount:pageSize"
+               ng-click="selectPage($index + 1)" class="btn btn-default"
+               ng-class="getPageClass($index + 1)">
+                {{$index + 1}}
+            </a>
+        </div>
+    </div>
+</div>
+

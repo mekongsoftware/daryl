@@ -1,0 +1,107 @@
+
+<div class="well">
+
+    <div class="alert alert-danger" ng-show="cartData.orderProducts.length == 0">
+        {{'order_empty' | translate}}
+    </div>
+    <div xng-hide="cartData.orderProducts.length == 0">
+        <div class="row">
+            <div class="col-sm-offset-5 col-sm-1 text-right"><strong>Qty</strong></div>
+            <div class="col-sm-1 text-right"><strong>Unit</strong></div>
+            <div class="col-sm-1 text-right"><strong>Price</strong></div>
+        </div>
+
+        <div ng-repeat="product in cartData.orderProducts">
+
+            <div class="row vcenter vspacer-top">
+                <div class="col-sm-5 text-left">
+                    {{product.name}}
+                    <span class="modifier">{{product | productModifiers: lookup: 'freeOnly'}}</span>
+                    <span class="note">{{product.notes}} </span>
+                </div>
+                <div class="col-sm-1 text-right">{{product.quantity}}</div>
+                <div class="col-sm-1 text-right">{{product.price | currency}}</div>
+                <div class="col-sm-1 text-right">{{product.quantity * product.price | currency}}</div>
+
+                <div class="col-sm-3">
+                    <div ng-show="product.isChangeAllowed && !currentOrder.currentOrder.isLocked">
+                        <button ng-click="reduceQuantity(product)" 
+                                class="btn btn-sm btn-warning"
+                                ng-attr-data-toggle="{{product.quantity > 1 ? 'modal' : ''}}" data-target="#remove-item-dlg">
+                            -
+                        </button>
+                        <button ng-click="changeQuantity(product, 1)" class="btn btn-sm btn-warning">
+                            +
+                        </button>
+                        <button ng-click="selectAddons(product)" class="btn btn-sm btn-warning">
+                            ?
+                        </button>
+                    </div>
+                    <div ng-show="product.isCancellable" class="checkbox">
+                        <button ng-click="cancelProduct(product)" class="btn btn-sm btn-warning">
+                            x
+                        </button>
+                    </div>
+                    <div ng-show="!product.isCancellable && !product.isChangeAllowed">
+                        <span class="status-item">
+                            {{product.statusId | lookupDesc: lookup.statuses: 'statusId'}}
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div ng-repeat="addon in product.orderProductAddons">
+                <div class="row" ng-show="addon.price>0">
+                    <div class="col-sm-5 text-left modifier">{{addon.name}}</div>
+                    <div class="col-sm-1 text-right">{{product.quantity}}</div>
+                    <div class="col-sm-1 text-right">{{addon.price | currency}}</div>
+                    <div class="col-sm-1 text-right">{{product.quantity * addon.price | currency}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row vspacer-top-10">
+        <div class="col-sm-offset-5 col-sm-2 text-right">
+            <strong>Total:</strong>
+        </div>
+        <div class="col-sm-1 text-right">
+            <strong>{{total() | currency}}</strong>
+        </div>
+    </div>
+    <div class="row vspacer-top-10">
+        <div class="col-sm-2 pull-right">
+            <button ng-click="selectProduct()"
+                    class="btn btn-sm btn-success text-right"
+                    ng-show="!isShowProduct && !currentOrder.isLocked">
+                {{'add_item' | translate}}
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="remove-item-dlg" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Reduce Quantity</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    If you wish to change modifier for one of these items, select <code>Reduce and Add Separate Item</code>,
+                    otherwise select <code>Reduce Only</code>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="removeItem(false)" class="btn btn-sm btn-warning" data-dismiss="modal">
+                    Reduce and Add Separate Item
+                </button>
+                <button ng-click="removeItem(true)" class="btn btn-sm btn-warning" data-dismiss="modal">
+                    Reduce Only
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

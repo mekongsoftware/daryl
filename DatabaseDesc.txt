@@ -1,0 +1,30 @@
+Restaurant
+	Store info, tax rate, suggested tip rate, group surcharge...
+
+User
+	User name, login, contact, role, MS Identity ID...
+
+UserType 
+	Is user a Waiter, Cook, Bus Boy, Cashier, Manager...
+
+Table 
+	Tables identiifcation, contain all tables in store like table 1, 2, 3...
+
+Category 
+	Menu categories: Drink, Pho, Rice...
+
+Product
+	Food item (number, description, price, category) like Pho Tai, Pho Dac Biet, Com Bi Cha...
+
+Addon
+	Extra item (like product but are add-on, go with another product) like: Extra Beef, Extra Soup, Hanh Chan Nuoc Beo...
+
+Status
+	Status of order like Order Confirmed, Preparing, Waiting to Deliver, Delivered, Paid, Cleaned Up...
+	
+Order
+	Order per table, total price, tip, tax, grand total, service people, order/delivery/paid times
+	
+OrderDetail
+	All items detail in the order
+

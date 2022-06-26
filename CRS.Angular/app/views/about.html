@@ -1,0 +1,74 @@
+<h1>
+    Complete Restaurant Solution
+</h1>
+
+<h5>
+    <em>
+        Developed by Daryl Khuong
+    </em>
+</h5>
+<hr />
+
+<h3>Technical Details</h3>
+<ul>
+    <li>AngularJS 1.5</li>
+    <li>Bootstrap</li>
+    <li>Web API, Entity Framework</li>
+    <li>SQL Server</li>
+    <li>Microsoft Azure</li>
+    <li>Token based authentication, OWIN and Identity</li>
+</ul>
+
+<h3>Development Environment</h3>
+<ul>
+    <li>Visual Studio 2015, any edition</li>
+    <li>SQL Server, any edition</li>
+    <li>SSMS, v 2016 is recomended</li>
+    <li>Git/BitBucket</li>
+</ul>
+
+<h3>Development Setup - Using Azure Backend</h3>
+<ul>
+    <li>
+        Modify config.js in CRS.Angular project change this line <br />
+        <code>window.__env.baseUrl = 'http://guavasystem.azurewebsites.net';</code>
+    </li>
+    <li>Right click on index.html, select <code>View in Browser</code> to start the program</li>
+</ul>
+
+<h3>Development Setup - Local</h3>
+<ul>
+    <li>
+        Create the database locally. In SSMS, copy Create_RestaurantDb.sql from the solution, modify where the database file is located,
+        <br /><code>FILENAME = N'D:\_sql_data\Restaurant.mdf'</code> and
+        <br /><code>FILENAME = N'D:\_sql_data\Restaurant_log.ldf'</code>
+        <br />then Execute
+    </li>
+
+    <li>
+        Create roles, lookup table and customer test data. In SSMS, execute these 3 stored procedures:
+        <br /><code>EXEC DeleteAllData</code>
+        <br /><code>EXEC RefreshData</code>
+        <br /><code>EXEC SetupRestaurantDataForTesting</code>
+    </li>
+    <li>
+        Create user login using Identity. Run Web.API project, you'll see an error, it's expected. Change the
+        URL to
+        <br /><code>http://localhost:xxxx/api/CreateAccounts</code> then enter. This will create initial accounts for
+        each restaurant (demo, waiter, preparer, deliverer, and owner).
+    </li>
+    <li>
+        Modify config.js in CRS.Angular project change this line <br />
+        <code>window.__env.baseUrl = 'http://localhost:xxxx';</code>
+        where xxxx is the actual port of Web.API.
+    </li>
+    <li>Right click on index.html, select <code>View in Browser</code> to start the program</li>
+</ul>
+
+
+<h3>Solution Structure</h3>
+<div><img src="/app/resources/angular-project.jpg" /></div>
+<div><img src="/app/resources/webapi-project.jpg" /></div>
+
+<h3>Database</h3>
+<div><img src="/app/resources/database.jpg" /></div>

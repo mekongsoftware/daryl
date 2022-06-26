@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <link href="/app/resources/site.css" rel="stylesheet" />
+    <link href="/app/resources/favicon.ico" rel="icon" type="image/x-icon" />
+    <!--UI-Router Source: https://scotch.io/tutorials/angular-routing-using-ui-router-->
+    <!--Validation: https://scotch.io/tutorials/angularjs-form-validation-with-ngmessages-->
+    <!-- CDN sources -->
+    <!--
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.5.8/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.min.js></script>
+    -->
+    <!-- Local sources -->
+    <link href="/libs/bootstrap/bootstrap-3.3.7.css" rel="stylesheet" />
+    <link href="/libs/loading-bar/loading-bar.css" rel="stylesheet" />
+
+    <script src="/libs/jquery/jquery-3.1.1.js"></script>
+    <script src="/libs/bootstrap/bootstrap-3.3.7.js"></script>
+
+    <script src="/libs/angular/1.5.8/angular.min.js"></script>
+    <script src="/libs/angular/1.5.8/angular-resource.min.js"></script>
+    <script src="/libs/angular/1.5.8/angular-messages.min.js"></script>
+    <script src="/libs/angular/1.5.8/angular-ng-storage.3.11.min.js"></script>
+    <script src="/libs/angular/1.5.8/angular-ui.router-0.3.1.js"></script>
+    <script src="/libs/loading-bar/loading-bar.js"></script>
+
+
+    <!--<script src="/libs/angular/angular-1.6.1.min.js"></script>
+    <script src="/libs/angular/angular-ui.router-0.3.2.js"></script>
+    <script src="/libs/angular/angular-resource-1.6.1.min.js"></script>
+    <script src="/libs/angular/angular-messages-1.6.1.min.js"></script>
+    <script src="/libs/angular/angular-ng-storage.3.11.min.js"></script>
+    <script src="/libs/loading-bar/loading-bar.js"></script>-->
+
+
+    <script src="/config.js"></script>
+
+    <!-- Load app main script -->
+    <script>
+        var mainApp = angular.module('mainApp', [
+                'ui.router'
+                , 'ngStorage'
+                , 'ngResource'
+                , 'angular-loading-bar'       // authService
+                , 'admin.category'
+                , 'admin.product'
+                , 'admin.addon'
+                , 'admin.restaurant'
+                , 'admin.table'
+                , 'order'
+                , 'custom-filters'
+                , 'custom-order-filters'
+                , 'test'
+        , 'navigationDir'
+        ]);
+    </script>
+
+    <!-- dependencies -->
+    <script src="/app/helpers/js-utilities.js"></script>
+    <script src="/app/helpers/custom-filters.js"></script>
+    <script src="/app/helpers/navigation-directive.js"></script>
+
+    <script src="/app/app_start/constants.js"></script>
+    <script src="/app/app_start/navigation.js"></script>
+    <script src="/app/app_start/router.js"></script>
+    <script src="/app/app_start/initialization.js"></script>
+    <script src="/app/app_start/lookup-service.js"></script>
+
+    <script src="/app/authentication/auth-interceptor-service.js"></script>
+    <script src="/app/authentication/auth-service.js"></script>
+    <script src="/app/authentication/login-controller.js"></script>
+    <script src="/app/authentication/signup-controller.js"></script>
+
+    <script src="/app/order/order-controller.js"></script>
+    <script src="/app/order/order-list-controller.js"></script>
+    <script src="/app/order/addon-list-controller.js"></script>
+    <script src="/app/order/product-list-controller.js"></script>
+    <script src="/app/order/cart-factory.js"></script>
+    <script src="/app/order/cart-controller.js"></script>
+    <script src="/app/order/table-list-controller.js"></script>
+    <script src="/app/order/custom-order-filters.js"></script>
+
+    <script src="/app/admin/category/category.js"></script>
+    <script src="/app/admin/product/product.js"></script>
+    <script src="/app/admin/addon/addon.js"></script>
+    <script src="/app/admin/restaurant/restaurant.js"></script>
+    <script src="/app/admin/table/table.js"></script>
+
+    <script src="/app/z_dev_test/test.js"></script>
+</head>
+
+<body ng-app="mainApp">
+    <div class="nav-bar navbar-fixed-top">
+        <div class="container-fluid nav-custom">
+            <div navigation-dir
+                 current-state="{{$state.current.name}}"
+                 user-access-level="{{authData.accessLevel}}"
+                 user-name="{{authData.userName}}"
+                 current-language="{{authData.currentLanguage}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" ng-controller="loginCtrl">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="app-container" ui-view></div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-5" ng-show="authData.userName != undefined">
+                        {{authData.restaurantName}} |
+                        {{authData.userName}}
+                    </div>
+                        
+                    <div class="col-sm-5 pull-right text-right">
+                        &copy; 2017 www.guavasystem.com | 
+                        <a ui-sref="contact">Contact</a> |
+                        <a ui-sref="help">Help</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
